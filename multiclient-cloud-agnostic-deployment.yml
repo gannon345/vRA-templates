@@ -1,0 +1,25 @@
+formatVersion: 1
+inputs:
+  cloud:
+    type: string
+    enum:
+      - 'cloud:aws'
+      - 'cloud:azure'
+      - 'cloud:vsphere'
+    description: Target Environment
+    default: 'cloud:vsphere'
+resources:
+  Node_1:
+    type: Cloud.Machine
+    properties:
+      image: CentOS7
+      flavor: tiny
+      constraints:
+        - tag: '${input.cloud}'
+  Node_2:
+    type: Cloud.Machine
+    properties:
+      image: CentOS7
+      flavor: tiny
+      constraints:
+        - tag: '${input.cloud}'
